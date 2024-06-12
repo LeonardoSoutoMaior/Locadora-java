@@ -83,6 +83,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuAtor.setText("Ator");
         jMenuAtor.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jMenuAtor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAtorActionPerformed(evt);
+            }
+        });
         jMenuCadastro.add(jMenuAtor);
 
         jMenuCliente.setText("Cliente");
@@ -125,6 +130,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuAtorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAtorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuAtorActionPerformed
 
     /**
      * @param args the command line arguments

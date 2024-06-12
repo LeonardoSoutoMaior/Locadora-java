@@ -5,6 +5,7 @@
 package locadora.view;
 
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
 import locadora.controller.FilmeController;
 
 /**
@@ -226,11 +227,17 @@ public class TelaCadastroFilme extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        // TODO add your handling code here:
+        jTextTitulo.setText("");
+        jComboBoxGenero.setSelectedIndex(0);
+        jTextAreaSinopse.setText("");
+        jSpinnerDuracao.setModel(new SpinnerNumberModel(20,20,300,10));
+        
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        // TODO add your handling code here:
+        TelaPrincipal telaPrincipal = new TelaPrincipal();
+        this.dispose();
+        telaPrincipal.setVisible(true);
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed

@@ -4,6 +4,9 @@
  */
 package locadora.view;
 
+import javax.swing.JOptionPane;
+import locadora.controller.AtorController;
+
 /**
  *
  * @author Léo - Xande
@@ -52,7 +55,7 @@ public class TelaCadastroAtor extends javax.swing.JFrame {
         jLabelNome.setText("Nome:");
 
         jTextFieldNome.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextFieldNome.setText("Informe o nome do ator");
+        jTextFieldNome.setToolTipText("Informe o nome do ator");
 
         jLabelNacionalidade.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabelNacionalidade.setForeground(new java.awt.Color(255, 255, 255));
@@ -63,15 +66,35 @@ public class TelaCadastroAtor extends javax.swing.JFrame {
 
         jButtonSalvar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
 
         jButtonLimpar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonLimpar.setText("Limpar");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         jButtonConsultar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonConsultar.setText("Consultar");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelCadastroAtorLayout = new javax.swing.GroupLayout(jPanelCadastroAtor);
         jPanelCadastroAtor.setLayout(jPanelCadastroAtorLayout);
@@ -145,6 +168,40 @@ public class TelaCadastroAtor extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        String nome = jTextFieldNome.getText();
+        String nacionalidade = jComboBoxNacionalidade.getSelectedItem().toString();
+        boolean sucesso;
+        
+        try {
+            AtorController atorController = new AtorController();
+            sucesso = atorController.cadastrarAtor(nome, nacionalidade);
+            if(sucesso == true){
+                JOptionPane.showMessageDialog(null, "O cadastro foi realizado com sucesso");
+                this.jButtonLimparActionPerformed(evt);
+            } else{
+                JOptionPane.showMessageDialog(null, "Os campos não foram preenchidos corretamente");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Erro: " + e);
+        }
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        jTextFieldNome.setText("");
+        jComboBoxNacionalidade.setSelectedIndex(0);
+    }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        TelaCadastroAtor telaCadastroAtor = new TelaCadastroAtor();
+        this.dispose();
+        telaCadastroAtor.setVisible(true);
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     /**
      * @param args the command line arguments
